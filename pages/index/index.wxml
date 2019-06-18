@@ -1,0 +1,43 @@
+<!--index.wxml-->
+
+<!--搜索框-->
+<import src="../components/searchBar/searchBar" />
+<view bindtap=''>
+  <template is="searchBar" data="{{...searchBar}}" />
+</view>
+
+<!--广告位-->
+<swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode="aspectFill" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 科室导航 -->
+<view class='depNav-title flex bg-white solid-bottom'>
+  <view class='flex-sub padding-sm radius'>
+    <image src='../../images/dep.png' class='fl'></image>
+    <text class='text-lg text-black'>选择科室</text>
+  </view>
+  <view class='flex-sub padding-sm margin-xs radius text-right'>
+    <text class='text-gray'>在线医生：{{doctorNum}}名</text>
+  </view>
+</view>
+
+<view class="depNav-box bg-white padding-sm">
+  <view class="grid col-3">
+    <block wx:for="{{depNav}}" wx:key="{{depNav}}">
+      <view class='text-center'>
+        <view bindtap='toShop' class="depNav-list margin-top-sm margin-bottom-sm" hover-class="navigator-hover" data-id="{{item.departmentId}}">
+          <view>
+            <image src="{{item.deptIcon}}"></image>
+          </view>
+          <text class='text-df margin-top-xs'>{{item.departmentName}}</text>
+          <text class='text-sm text-gray'>{{item.onlineDoctorCount}}位医生在线</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

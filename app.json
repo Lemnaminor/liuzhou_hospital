@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/advice/advice",
+    "pages/user/user",
+
+    "pages/components/searchBar/searchBar",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#00d8a0",
+    "navigationBarTitleText": "柳工医院",
+    "backgroundColor": "#eeeeee"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#00d8a0",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/ask.png",
+        "iconPath": "images/ask.png",
+        "pagePath": "pages/index/index",
+        "text": "在线咨询"
+      },
+      {
+        "selectedIconPath": "images/advice.png",
+        "iconPath": "images/advice.png",
+        "pagePath": "pages/advice/advice",
+        "text": "咨询记录"
+      },
+      {
+        "selectedIconPath": "images/user.png",
+        "iconPath": "images/user.png",
+        "pagePath": "pages/user/user",
+        "text": "个人中心"
+      }
+    ]
+  }
+}

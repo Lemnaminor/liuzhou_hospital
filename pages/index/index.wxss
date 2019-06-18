@@ -1,0 +1,56 @@
+/**index.wxss**/
+
+/**广告图**/
+
+.slide-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/** 科室导航 **/
+
+.depNav-title {
+  justify-content: center;
+  align-items: center;
+}
+
+.depNav-title .flex-sub:first-child image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}
+
+.depNav-box .depNav-list image {
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.depNav-box .depNav-list>view {
+  display: inline-block;
+  background: #f4f4f4;
+  padding: 12rpx;
+  box-sizing: border-box;
+  border: 10rpx solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3rpx #ddd;
+}
+.depNav-box .depNav-list>text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigator-hover {
+  background: #fff;
+  opacity: 1!important;
+}
+.navigator-hover view {
+  background: #eee!important;
+}
+.navigator-hover text {
+  color: #333!important;
+}
+.navigator-hover text {
+  color: #00d8a0!important;
+}

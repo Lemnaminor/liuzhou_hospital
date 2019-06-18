@@ -1,0 +1,11 @@
+/**引入weUI、colorUI框架css样式**/
+@import "weui.wxss";
+@import "colorui.wxss";
+@import "icon.wxss";
+
+/**app.wxss**/
+/** 公共样式 **/
+.bg-main-color {
+  color: #fff;
+  background-image: linear-gradient(45deg, #1cbbb4, #00d8a0);
+}
