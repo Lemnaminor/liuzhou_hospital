@@ -19,7 +19,7 @@
         <view class='margin-top-xs'>
           <button class='cu-btn margin-right-sm text-white' bindtap='changeCollection'>
             <text class='icon-{{collectionIcon}} lg margin-right-xs'></text>{{collectionName}}</button>
-          <button class='cu-btn text-white'>
+          <button class='cu-btn text-white' bindtap='toQrcode'>
             <text class='icon-qrcode lg margin-right-xs'></text>二维码</button>
         </view>
       </view>
@@ -63,13 +63,14 @@
     <view class='flex-sub text-xl text-bold text-black'>图文咨询</view>
   </view>
   <view class='margin-top-sm' wx:if="{{doctorDetail.onlineState == '0'}}">
-    <text>当前医生在线，可以随时发起咨询。</text>
+    <text>{{onlineText}}</text>
   </view>
   <view class='margin-top-sm' wx:elif="{{doctorDetail.onlineState == '1'}}">
     <text>当前医生离线，暂时无法回复。</text>
   </view>
   <view class='flex flex-direction'>
-    <button class='cu-btn bg-main lg margin-top-lg' disabled="{{doctorDetail.onlineState == '1'}}" type=''>开始咨询（0）元</button>
+    <button wx:if="{{isConsult == false}}" bindtap='consultStart' class='cu-btn bg-main lg margin-top-lg' disabled="{{doctorDetail.onlineState == '1'}}" type=''>开始咨询（0）元</button>
+    <button wx:else class='cu-btn bg-main lg margin-top-lg'>继续咨询（剩余{{doctorDetail.consulOrder.remainingHours}}小时）</button>
   </view>
 </view>
 

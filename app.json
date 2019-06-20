@@ -1,7 +1,9 @@
 {
   "pages":[
+    "pages/consultInfo/consultInfo",
+        "pages/doctorDetail/doctorDetail",
     "pages/qrcode/qrcode",
-    "pages/doctorDetail/doctorDetail",
+
     "pages/departList/departList",
     "pages/index/index",
     "pages/advice/advice",

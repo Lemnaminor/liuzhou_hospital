@@ -13,3 +13,6 @@
   color: #fff;
   background: #00d8a0!important;
 }
+.text-main {
+  color: #00d8a0!important;
+}

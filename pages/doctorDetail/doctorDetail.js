@@ -21,30 +21,13 @@ Page({
     collectionName: '',
 
     // 医生详情数据
-    doctorDetail: {
-      "doctorId": "324223",
-      "doctorName": "陈恩德",
-      "doctorIcon": "../../images/head1.jpg",
-      "deptId": "111",
-      "doctorLevel": "主治医师",
-      "doctorSkill": "妇产科常见病、多发病的诊治,计划生育及流产后关爱,妇科内分泌疾病的诊治。",
-      "hospitalName": "柳州市工人医院",
-      "deptName": "妇科",
-      "qrCodeImg": " http://www.baidu.com",// 二维码
-      "consultationNum": 88, //咨询数
-      "collectionNum": 10,  // 收藏数
-      "isCollection": "0",//备注：是否收藏，0-为收藏，1-收藏
-      "onlineState": "0",//备注：是否在线，0-在线，1-离线
-      "responseRate": "100%",
-      "doctorIntroduction": "2015年毕业于广西医科大学临床医学专业，有扎实理论基础，熟练掌握妇科常见病、多发病的诊治以及计生常见手术。",
-      "consulOrder": {
-        "openId": "324223",
-        "doctorId": "324223",
-        "startConsulTime": "2019-06-15 0:58:32",
-        "endConsulTime": "2019-06-14 19:58:32",
-        "remainingHours": "6",//备注：离咨询结束剩余小时
-      },
-    }
+    doctorDetail: '',
+
+    // 是否开始咨询
+    isConsult: false,
+
+    // 在线-图片咨询文本内容
+    onlineText: '当前医生在线，可以随时发起咨询。',
 
   },
 
@@ -59,7 +42,46 @@ Page({
     }else{
       that.setData({ lineNum: 2, lineText: '展开', lineIcon: 'unfold', isShowLine: false, });
     }
-    
+  },
+
+  // 医生详情接口
+  doctorDetail: function () {
+    var that = this;
+    wx.request({
+      url: 'https://www.easy-mock.com/mock/5d09a09ce9fb5077ed6eb899/api/doctor/detail',
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log('***** 医生详情接口调用 *****');
+        console.log(res);
+        that.setData({
+          doctorDetail: res.data
+        });
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },  
+
+  // 开始咨询方法
+  consultStart:function(){
+    console.log('***** 开始咨询方法 *****');
+    var that = this;
+    that.setData({
+      isConsult: true,
+      onlineText: '您的订单已经建立，可以继续咨询。'
+    })
+
+    console.log('***** 跳转咨询信息页面 *****')
+    wx.navigateTo({
+      url: '/pages/consultInfo/consultInfo',
+    })
+
   },
 
   // 游客评价接口
@@ -125,13 +147,28 @@ Page({
     }
   },
 
+  // 跳转二维码页面
+  toQrcode(){
+    console.log('***** 跳转二维码页面 *****');
+    wx.navigateTo({
+      url: '/pages/qrcode/qrcode',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+    wx.showLoading({
+      title: '数据加载中',
+    })
+
+    this.doctorDetail(); // 医生详情接口
     this.evaluateList(); // 游客评论接口
     this.isCollection(); // 收藏接口
+
+    wx.hideLoading();
 
   },
 

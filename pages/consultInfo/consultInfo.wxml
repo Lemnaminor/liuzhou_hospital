@@ -1,0 +1,149 @@
+<!--pages/consultInfo/consultInfo.wxml-->
+<!-- 咨询信息页面 -->
+<view class='consultInfo-box'>
+
+  <view class="cu-list menu menu-avatar padding-tb-xs bg-white">
+
+    <!-- 头部信息 -->
+    <view class="cu-item">
+      <view class="cu-avatar radius lg" style="background-image:url({{doctorDetail.doctorIcon}});"></view>
+      <view class='content'>
+        <view>
+          <text class='margin-right-sm text-xl'>{{doctorDetail.doctorName}}</text>
+          <text class='text-gray'>{{doctorDetail.doctorLevel}}</text>
+        </view>
+        <view class='text-gray'>
+          <text class='margin-right-sm'>{{doctorDetail.hospitalName}}</text>
+          <text>{{doctorDetail.deptName}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 为谁咨询 -->
+  <view class='flex bg-white padding-lr padding-tb-sm margin-top-sm align-end'>
+    <view class='flex-sub text-lg'>为谁咨询</view>
+    <view class='flex-sub text-right text-gray' bindtap='showHospitalCardModel'>点击选择
+      <text class='icon-right lg text-gray margin-left-xs'></text>
+    </view>
+  </view>
+
+  <!-- 选择就诊卡底部弹出层 -->
+  <view class="cu-modal bottom-modal {{isShowHospitalCardModel?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white">
+        <view class='action text-blue' bindtap='hideHospitalCardModel'>取消</view>
+      </view>
+      <view class='padding-xl'>
+        Modal 内容。
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容描述 -->
+  <view class="textarea-wrp margin-top-sm">
+    <textarea wx:if="{{isShowMask}}" value='{{content}}' placeholder="{{placeholder}}" maxlength="{{textMaxLength}}" bindinput="bindText" />
+    <view class='textLength text-right solids-bottom padding-tb-sm text-gray'>
+      <text>{{writeLength}}</text> /
+      <text>{{textMaxLength}}</text>
+    </view>
+  </view>
+
+  <!-- 图片上传 -->
+  <view class="weui-uploader bg-white padding">
+
+    <view class="weui-uploader__bd">
+      <view class="weui-uploader__files" id="uploaderFiles">
+
+        <block wx:for="{{files}}" wx:key="*this">
+          <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+            <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+          </view>
+        </block>
+
+      </view>
+      <view class="weui-uploader__input-box" wx:if="{{files.length < 3}}">
+        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+      </view>
+    </view>
+
+    <view>
+      <view>添加照片（可选）{{files.length}}/3</view>
+      <view>病症部位、检查报告等辅助资料，会严格保密，只有您的医生能看到。</view>
+    </view>
+
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class='padding '>
+    <label bindtap='isClause'>
+      <text class='text-lg'>
+        <text class="icon-{{isClause?'roundcheckfill':'roundcheck'}} text-{{isClause?'green':'gray'}}"></text>
+      </text>
+      接受
+    </label>
+    <text class='text-green' bindtap="showModal" data-target="DialogModal1">《柳州市工人医院咨询用户协议》</text>
+
+    <view class='flex flex-direction margin-top'>
+      <button class='cu-btn bg-main lg'>开始咨询</button>
+    </view>
+  </view>
+
+  <!-- 用户协议弹窗 -->
+  <view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class='content'>许可协议</view>
+        <view class='action' bindtap='hideModal'>
+          <text class='icon-close text-red'></text>
+        </view>
+      </view>
+      <view class='padding-xl'>
+        <view class='clause-cont text-left'>
+          <text>柳州市工人医院在线问诊用户协议
+          甲方：柳州市工人医院
+          乙方：咨询者
+          第一条：条款确认
+          1.1 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院。
+          1.2 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，
+                    1.1 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院。
+          1.2 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，
+                    1.1 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院。
+          1.2 柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，柳州市工人医院在线问诊各项电子服务的所有权和运作全贵柳州市工人医院，
+        </text>
+        </view>
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class='action'>
+          <button class='cu-btn bg-green margin-left' bindtap='hideModal'>确定</button>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始咨询弹窗 -->
+  <view class="cu-modal {{isOneShowModel?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class='content'>开始咨询</view>
+        <view class='action' bindtap='hideModal'>
+          <text class='icon-close text-red'></text>
+        </view>
+      </view>
+      <view class='padding-xl'>
+        <view class='text-left'>
+          <text>请在6小时内描述您的病情，并发起咨询。如果超过6小时您未提问，系统将自动结束订单，如您已付款，会自动退款。</text>
+        </view>
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class='action'>
+          <button class='cu-btn bg-green margin-left' bindtap='oneModelHide'>确定</button>
+
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

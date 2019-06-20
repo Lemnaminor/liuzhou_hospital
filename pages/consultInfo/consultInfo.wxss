@@ -1,0 +1,17 @@
+/* pages/consultInfo/consultInfo.wxss */
+.textarea-wrp {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0 3%;
+}
+.textarea-wrp textarea {
+  width: 100%;
+  height: 400rpx;
+  box-sizing: border-box;
+  padding: 3% 0;
+  font-size: 32rpx;
+}
+.clause-cont {
+  height: 500rpx;
+  overflow-y: scroll;
+}
