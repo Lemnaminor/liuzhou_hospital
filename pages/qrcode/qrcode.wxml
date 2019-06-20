@@ -1,0 +1,22 @@
+<!--pages/qrcode/qrcode.wxml-->
+<view class='qrcode-box'>
+
+  <view class='qrcode-cont'>
+    <view class="cu-list menu menu-avatar">
+
+      <view class="cu-item">
+        <view class="cu-avatar radius lg" style="background-image:url(https://image.weilanwl.com/img/square-3.jpg);"></view>
+        <view class='content'>
+          <view>
+            <text class='margin-right-sm text-xl'>姓名</text>
+            <text class='text-gray'>主治医师</text>
+          </view>
+          <view class='text-gray'>
+            喵星酱：喵喵喵！</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+</view>

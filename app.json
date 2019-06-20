@@ -1,10 +1,16 @@
 {
   "pages":[
+    "pages/qrcode/qrcode",
+    "pages/doctorDetail/doctorDetail",
+    "pages/departList/departList",
     "pages/index/index",
     "pages/advice/advice",
     "pages/user/user",
+ 
 
     "pages/components/searchBar/searchBar",
+    "pages/components/doctorOnlineList/doctorOnlineList",
+    "pages/components/loding/loding",
     "pages/logs/logs"
   ],
   "window": {

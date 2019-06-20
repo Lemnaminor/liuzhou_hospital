@@ -1,0 +1,13 @@
+/* pages/departList/departList.wxss */
+.cu-list.menu-avatar>.cu-item {
+  padding-left:180rpx;
+  height:180rpx;
+}
+.depart-online {
+  position: absolute;
+  bottom: 0;
+  right: -10rpx;
+}
+.content {
+  width: 480rpx;
+}

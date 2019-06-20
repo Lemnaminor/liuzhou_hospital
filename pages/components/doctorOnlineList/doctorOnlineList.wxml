@@ -1,0 +1,28 @@
+<!--pages/components/doctorOnlineList/doctorOnlineList.wxml-->
+<template name="doctorOnlineList">
+<view class='depart-box bg-white margin-top-sm'>
+  <view class='depart-title flex solid-bottom'>
+    <view class='flex-sub padding-sm'>
+      <image src='../../images/dep.png' class='fl title-icon'></image>
+      <text class='text-lg text-black'>{{departmentName}}</text>
+    </view>
+    <view class='flex-sub padding-sm text-right'>
+      <text class='text-gray' bindtap='toDepartList'>更多</text>
+      <text class='icon-right lg text-gray'></text>
+    </view>
+  </view>
+  <scroll-view scroll-x="true" class='depart-list padding-top padding-bottom padding-left-sm padding-right-sm'>
+
+    <view class='depart-list-item bg-white solid text-center padding-top padding-bottom margin-xs'
+      wx:for="{{doctorDetail}}" wx:key="{{doctorDetail.doctorId}}">
+      <view class="depart-head lg cu-avatar round solid" style="background-image:url('{{item.doctorIcon}}');">
+        <view class='depart-online cu-tag sm round bg-cyan'>在线</view>
+      </view>
+      <view class='margin-top-sm'>{{item.doctorName}}</view>
+      <view class='text-sm text-gray margin-top-sx margin-bottom-xs'>{{item.doctorLevel}}</view>
+      <button class='cu-btn line-cyan bg' bindtap='toDoctorDetail'>咨询</button>
+    </view>
+
+  </scroll-view>
+</view>
+</template>

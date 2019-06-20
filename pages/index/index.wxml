@@ -17,11 +17,11 @@
 
 <!-- 科室导航 -->
 <view class='depNav-title flex bg-white solid-bottom'>
-  <view class='flex-sub padding-sm radius'>
-    <image src='../../images/dep.png' class='fl'></image>
+  <view class='flex-sub padding-sm'>
+    <image src='../../images/dep.png' class='fl title-icon'></image>
     <text class='text-lg text-black'>选择科室</text>
   </view>
-  <view class='flex-sub padding-sm margin-xs radius text-right'>
+  <view class='flex-sub padding-sm margin-xs text-right'>
     <text class='text-gray'>在线医生：{{doctorNum}}名</text>
   </view>
 </view>
@@ -41,3 +41,19 @@
     </block>
   </view>
 </view>
+<view class='bg-white padding-left padding-right'>
+  <view class="dep-more solid-top padding bg-white text-center text-gray" bindtap='depMore'>
+    {{depText}}
+    <text class='icon-{{depIconName}} lg text-gray margin-left-xs'></text>
+  </view>
+</view>
+
+<!-- 查看科室在线医生 -->
+<import src="../components/doctorOnlineList/doctorOnlineList" />
+<block wx:for="{{doctorOnlineList}}" wx:key="doctorOnlineList.departmentId">
+  <template is="doctorOnlineList" data="{{...item}}" />
+</block>
+
+<!-- 列表底部文字加载 -->
+<import src="../components/loding/loding" />
+<template is="loding"  wx:if="{{isLoading}}" />

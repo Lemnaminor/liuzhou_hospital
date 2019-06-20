@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.depNav-title .flex-sub:first-child image {
+.title-icon {
   width: 45rpx;
   height: 45rpx;
   margin-right: 10rpx;
@@ -53,4 +53,22 @@
 }
 .navigator-hover text {
   color: #00d8a0!important;
+}
+
+/** 查看科室在线医生 **/
+.depart-box {
+  background: #f9fbfc;
+}
+.depart-list {
+  white-space: nowrap;
+}
+.depart-list-item {
+  display: inline-block;
+  width: 200rpx;
+}
+
+.depart-online {
+  position: absolute;
+  bottom: -10rpx;
+  right: 0;
 }

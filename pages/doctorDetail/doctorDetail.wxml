@@ -1,0 +1,104 @@
+<!--pages/doctorDetail/doctorDetail.wxml-->
+<!-- 科室医生详情 -->
+<view class='doctor-box'>
+  <view class='doctor-info'>
+    <view class='flex'>
+      <view class='margin-right'>
+        <view class="cu-avatar xl round margin-left" style="background-image:url({{doctorDetail.doctorIcon}});">
+          <view wx:if="{{doctorDetail.onlineState == '0'}}" class='depart-online cu-tag lg round bg-white text-cyan'>在线</view>
+          <view wx:elif="{{doctorDetail.onlineState == '1'}}" class='depart-online cu-tag lg round bg-white text-cyan'>离线</view>
+        </view>
+      </view>
+      <view>
+        <view>
+          <text class='text-xl text-bold margin-right-sm'>{{doctorDetail.doctorName}}</text>
+          <text>{{doctorDetail.doctorLevel}}</text>
+        </view>
+        <view>{{doctorDetail.hospitalName}}</view>
+        <view>{{doctorDetail.deptName}}</view>
+        <view class='margin-top-xs'>
+          <button class='cu-btn margin-right-sm text-white' bindtap='changeCollection'>
+            <text class='icon-{{collectionIcon}} lg margin-right-xs'></text>{{collectionName}}</button>
+          <button class='cu-btn text-white'>
+            <text class='icon-qrcode lg margin-right-xs'></text>二维码</button>
+        </view>
+      </view>
+    </view>
+
+    <view class='doctor-nav grid col-3 padding-lg text-center'>
+      <view>
+        <text class='text-xl text-bold margin-right-sm'>{{doctorDetail.consultationNum}}</text>
+        <text>次咨询</text>
+      </view>
+      <view>
+        <text class='text-xl text-bold margin-right-sm'>{{doctorDetail.responseRate}}</text>
+        <text>回复率</text>
+      </view>
+      <view>
+        <text class='text-xl text-bold margin-right-sm'>{{doctorDetail.collectionNum}}</text>
+        <text>个收藏</text>
+      </view>
+    </view>
+
+    <view class='wave-bg wave-bg1' style="background:url('../../images/wave1.png')"></view>
+    <view class='wave-bg wave-bg2' style="background:url('../../images/wave2.png')"></view>
+  </view>
+
+  <!-- 医生简介 -->
+  <view class='doctor-product padding bg-white text-content'>
+    <view class='doctor-title flex align-end'>
+      <view class='flex-sub text-xl text-bold text-black'>医生简介</view>
+      <view class='flex-sub text-right text-cyan' bindtap='showLine'>{{lineText}}
+        <text class='icon-{{lineIcon}} margin-left-xs lg'></text>
+      </view>
+    </view>
+    <view class='desc margin-top-sm' style='  -webkit-line-clamp: {{lineNum}};'>{{doctorDetail.doctorIntroduction}}</view>
+    <view class='skill margin-top-lg'>擅长：{{doctorDetail.doctorSkill}}</view>
+  </view>
+</view>
+
+<!-- 开始咨询 -->
+<view class='consult-box bg-white padding margin-top-sm'>
+  <view class='doctor-title flex align-end'>
+    <view class='flex-sub text-xl text-bold text-black'>图文咨询</view>
+  </view>
+  <view class='margin-top-sm' wx:if="{{doctorDetail.onlineState == '0'}}">
+    <text>当前医生在线，可以随时发起咨询。</text>
+  </view>
+  <view class='margin-top-sm' wx:elif="{{doctorDetail.onlineState == '1'}}">
+    <text>当前医生离线，暂时无法回复。</text>
+  </view>
+  <view class='flex flex-direction'>
+    <button class='cu-btn bg-main lg margin-top-lg' disabled="{{doctorDetail.onlineState == '1'}}" type=''>开始咨询（0）元</button>
+  </view>
+</view>
+
+<!-- 游客评价 -->
+<view class='evaluate-box bg-white margin-top-sm'>
+  <view class='doctor-title flex align-end padding-top padding-right padding-left'>
+    <view class='flex-sub text-xl text-bold text-black'>游客评价</view>
+  </view>
+
+  <view class="cu-list menu menu-avatar margin-top">
+    <view class="cu-item padding-top padding-bottom" wx:for="{{evaluateList}}" wx:key="{{evaluateList.openId}}">
+      <view class="cu-avatar radius lg" style="background-image:url({{item.wxIcon}});"></view>
+      <view class='content'>
+        <view>
+          <view>
+            <text class='margin-right-sm'>{{item.patientName}}</text>
+            <text class='icon-favorfill lg text-yellow' wx:for="{{item.starLevel}}" wx:key="{{index}}"></text>
+          </view>
+        </view>
+        <view class='text-gray text-sm tag-box'>
+          <view class='cu-tag radius bg-grey margin-bottom-xs' wx:for="{{item.evaluateLabelSeqText}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+        <view>{{item.evaluateContent}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 列表底部文字加载 -->
+<import src="../components/loding/loding" />
+<template is="loding" wx:if="{{isLoading}}" />

@@ -1,0 +1,67 @@
+/* pages/doctorDetail/doctorDetail.wxss */
+
+.depart-online {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.doctor-info {
+  position: relative;
+  background-image: linear-gradient(45deg, #11bb98, #4bbe81);
+  color: #fff;
+  padding: 60rpx 0 80rpx;
+}
+
+.doctor-info .cu-avatar {
+  width: 200rpx !important;
+  height: 200rpx !important;
+  font-size: 2.5em;
+  border: 2rpx solid #fff;
+}
+
+.doctor-box .cu-btn {
+  background: #68ca9d !important;
+}
+
+.wave-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 70rpx;
+}
+
+.doctor-nav>view {
+  position: relative;
+}
+
+.doctor-nav>view:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: 15rpx;
+  right: 0;
+  width: 1rpx;
+  height: 30rpx;
+  background: #9fdec3;
+}
+
+.doctor-product .desc {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-box-orient: vertical;
+}
+.tag-box .cu-tag {
+  margin-left: 0;
+  margin-right: 10rpx;
+}
+.evaluate-box .cu-item {
+  height: auto!important;
+  align-items: flex-start!important;
+  padding-top: 30rpx!important;
+  padding-bottom: 30rpx!important;
+}

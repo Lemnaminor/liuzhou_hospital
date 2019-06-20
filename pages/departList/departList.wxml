@@ -1,0 +1,24 @@
+<!--pages/departList/departList.wxml-->
+<!-- 科室列表 -->
+<view class="cu-list menu menu-avatar">
+
+  <view class="cu-item arrow" hover-class="navigator-hover" wx:for="{{departList}}" wx:key="{{departList.doctorId}}" bindtap='toDoctorDetail'>
+    <view class="cu-avatar radius xl margin-right-sm" style="background-image:url({{item.doctorIcon}});">
+      <view wx:if="{{item.onlineState == 0}}" class='depart-online cu-tag sm round bg-cyan'>在线</view>
+      <view wx:elif="{{item.onlineState == 1}}" class='depart-online cu-tag sm round bg-gray'>离线</view>
+    </view>
+    <view class='content'>
+      <view><text class='text-lg text-black'>{{item.doctorName}}</text><text class='text-sm text-gray margin-left-sm'>{{item.doctorLevel}}</text></view>
+      <view class='text-gray text-sm text-cut'>擅长：{{item.doctorSkill}}</view>
+      <view class='info'>
+        <text class='icon-recharge lg text-cyan margin-right'><text class='text-sm margin-left-xs'>{{item.consultationMoney}}元</text></text>
+        <text class='icon-comment lg text-gray margin-right'><text class='text-sm margin-left-xs'>{{item.consultationNum}}人</text></text>
+        <text class='text-sm  text-gray'>回复率：{{item.responseRate}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 列表底部文字加载 -->
+<import src="../components/loding/loding" />
+<template is="loding"  wx:if="{{isLoading}}" />
